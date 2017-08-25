@@ -41,11 +41,6 @@
 
 #include "boost/detail/workaround.hpp" // needed for BOOST_WORKAROUND
 
-#if BOOST_GCC >= 40700
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-local-typedefs"
-#endif
-
 namespace boost {
 namespace tuples {
 
@@ -230,7 +225,6 @@ inline typename access_traits<
 get(const cons<HT, TT>& c) {
   typedef BOOST_DEDUCED_TYPENAME detail::drop_front<N>::BOOST_NESTED_TEMPLATE
       apply<cons<HT, TT> > impl;
-  typedef BOOST_DEDUCED_TYPENAME impl::type cons_element;
   return impl::call(c).head;
 }
 
@@ -978,11 +972,6 @@ inline void swap(tuple<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>& lhs,
 
 } // end of namespace tuples
 } // end of namespace boost
-
-
-#if BOOST_GCC >= 40700
-#pragma GCC diagnostic pop
-#endif
 
 
 #endif // BOOST_TUPLE_BASIC_HPP
